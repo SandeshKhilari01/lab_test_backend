@@ -1,0 +1,135 @@
+
+> booking-api@1.0.0 dev
+> nodemon src/server.js
+
+[33m[nodemon] 3.1.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[dotenv@17.2.2] injecting env (4) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+/Users/sandeshsonabakhilari/Desktop/Inya-AI-LabTest/booking-api/node_modules/path-to-regexp/dist/index.js:96
+            throw new PathError(`Missing parameter name at index ${index}`, str);
+            ^
+
+PathError [TypeError]: Missing parameter name at index 1: *; visit https://git.new/pathToRegexpError for info
+    at name (/Users/sandeshsonabakhilari/Desktop/Inya-AI-LabTest/booking-api/node_modules/path-to-regexp/dist/index.js:96:19)
+    at parse (/Users/sandeshsonabakhilari/Desktop/Inya-AI-LabTest/booking-api/node_modules/path-to-regexp/dist/index.js:113:68)
+    at pathToRegexp (/Users/sandeshsonabakhilari/Desktop/Inya-AI-LabTest/booking-api/node_modules/path-to-regexp/dist/index.js:267:58)
+    at Object.match (/Users/sandeshsonabakhilari/Desktop/Inya-AI-LabTest/booking-api/node_modules/path-to-regexp/dist/index.js:237:30)
+    at matcher (/Users/sandeshsonabakhilari/Desktop/Inya-AI-LabTest/booking-api/node_modules/router/lib/layer.js:86:23)
+    at new Layer (/Users/sandeshsonabakhilari/Desktop/Inya-AI-LabTest/booking-api/node_modules/router/lib/layer.js:93:62)
+    at Function.use (/Users/sandeshsonabakhilari/Desktop/Inya-AI-LabTest/booking-api/node_modules/router/index.js:398:19)
+    at Function.<anonymous> (/Users/sandeshsonabakhilari/Desktop/Inya-AI-LabTest/booking-api/node_modules/express/lib/application.js:222:21)
+    at Array.forEach (<anonymous>)
+    at Function.use (/Users/sandeshsonabakhilari/Desktop/Inya-AI-LabTest/booking-api/node_modules/express/lib/application.js:219:7) {
+  originalPath: '*'
+}
+
+Node.js v20.19.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[dotenv@17.2.2] injecting env (4) from .env -- tip: ⚙️  override existing env vars with { override: true }
+(node:21539) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:21539) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+🚀 Booking API Server running on port 3000
+📍 Environment: development
+🔗 Health check: http://localhost:3000/health
+📋 API Base URL: http://localhost:3000/api/v1
+🍃 MongoDB Connected: localhost
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[dotenv@17.2.2] injecting env (4) from .env -- tip: 📡 auto-backup env with Radar: https://dotenvx.com/radar
+(node:21933) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:21933) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+🚀 Booking API Server running on port 3000
+📍 Environment: development
+🔗 Health check: http://localhost:3000/health
+📋 API Base URL: http://localhost:3000/api/v1
+🍃 MongoDB Connected: localhost
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[dotenv@17.2.2] injecting env (4) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+(node:35761) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:35761) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+🚀 Booking API Server running on port 3000
+Environment: development
+Health check: http://localhost:3000/health
+API Base URL: http://localhost:3000/api/v1
+🍃 MongoDB Connected: localhost
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[dotenv@17.2.2] injecting env (4) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+(node:57424) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:57424) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+🚀 Booking API Server running on port 3000
+Environment: development
+Health check: http://localhost:3000/health
+API Base URL: http://localhost:3000/api/v1
+🍃 MongoDB Connected: localhost
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[dotenv@17.2.2] injecting env (4) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+(node:57763) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:57763) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+🚀 Booking API Server running on port 3000
+Environment: development
+Health check: http://localhost:3000/health
+API Base URL: http://localhost:3000/api/v1
+🍃 MongoDB Connected: localhost
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[dotenv@17.2.2] injecting env (4) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+(node:58030) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:58030) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+🚀 Booking API Server running on port 3000
+Environment: development
+Health check: http://localhost:3000/health
+API Base URL: http://localhost:3000/api/v1
+🍃 MongoDB Connected: localhost
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[dotenv@17.2.2] injecting env (4) from .env -- tip: 📡 observe env with Radar: https://dotenvx.com/radar
+(node:58966) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:58966) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+🚀 Booking API Server running on port 3000
+Environment: development
+Health check: http://localhost:3000/health
+API Base URL: http://localhost:3000/api/v1
+🍃 MongoDB Connected: localhost
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
+MongoDB disconnected
