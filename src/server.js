@@ -4,6 +4,7 @@ const cors = require('cors');
 const connectDB = require('./config/database');
 const bookingRoutes = require('./routes/bookingRoutes');
 const emailRoutes = require('./routes/emailRoutes');
+const otpRoutes = require('./routes/otpRoutes');
 
 const app = express();
 const PORT = process.env.envPORT || process.env.PORT || 3000;
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/api/v1/bookings', bookingRoutes);
 app.use('/api/v1/email', emailRoutes);
+app.use('/api/v1/otp', otpRoutes);
 
 // Health check
 app.get('/health', (req, res) => {
