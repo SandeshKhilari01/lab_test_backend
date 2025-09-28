@@ -63,7 +63,7 @@ const emailConfig = {
   sgMail: sgMail,
   from: {
     name: process.env.EMAIL_FROM_NAME || 'Lab Test Confirmation',
-    address: "troupetech9@gmail.com"
+    address: process.env.EMAIL_USER
   }
 };
 
