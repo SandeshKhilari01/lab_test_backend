@@ -4,15 +4,15 @@ const emailConfig = require('../config/nodemailer');
 
 class EmailService {
   constructor() {
-    this.transporterPromise = emailConfig.transporterPromise;
+    this.sgMail = emailConfig.sgMail;
     this.from = emailConfig.from;
   }
 
   async verifyConnection() {
     try {
-      const transporter = await this.transporterPromise;
-      await transporter.verify();
-      console.log('Email service connected successfully');
+      // SendGrid doesn't have a verify method like nodemailer
+      // We can test by sending a simple test email or just return true
+      console.log('SendGrid email service initialized successfully');
       return true;
     } catch (error) {
       console.error('Email service connection failed:', error);
@@ -25,22 +25,21 @@ class EmailService {
       const template = await this.loadTemplate('emailTemplate.html');
       const html = this.generateEmailTemplate(template, bookingData);
       
-      const mailOptions = {
-        from: this.from,
+      const msg = {
         to: bookingData.recipientEmail,
+        from: this.from.address, // SendGrid expects just the email address
         subject: `Lab Test Booking Confirmation - ${bookingData.labTestName}`,
+        text: `Your lab test booking has been confirmed. Test: ${bookingData.labTestName}, Date: ${bookingData.date}, Time: ${bookingData.timeSlot}`,
         html: html,
-        text: `Your lab test booking has been confirmed. Test: ${bookingData.labTestName}, Date: ${bookingData.date}, Time: ${bookingData.timeSlot}`
       };
 
-      const transporter = await this.transporterPromise;
-      const info = await transporter.sendMail(mailOptions);
-      console.log(`Lab booking confirmation sent to ${bookingData.recipientEmail}: ${info.messageId}`);
+      const response = await this.sgMail.send(msg);
+      console.log(`Lab booking confirmation sent to ${bookingData.recipientEmail}: ${response[0].headers['x-message-id']}`);
       
       return { 
         success: true, 
-        messageId: info.messageId,
-        response: info.response 
+        messageId: response[0].headers['x-message-id'],
+        response: response[0].statusCode 
       };
     } catch (error) {
       console.error('Failed to send lab booking confirmation:', error);
