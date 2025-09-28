@@ -25,6 +25,15 @@ class EmailService {
       const template = await this.loadTemplate('emailTemplate.html');
       const html = this.generateEmailTemplate(template, bookingData);
       
+      // Validate required fields
+      if (!bookingData.recipientEmail) {
+        throw new Error('Recipient email is required');
+      }
+      
+      if (!this.from.address) {
+        throw new Error('Sender email is not configured');
+      }
+      
       const msg = {
         to: bookingData.recipientEmail,
         from: this.from.address, // SendGrid expects just the email address
@@ -32,6 +41,12 @@ class EmailService {
         text: `Your lab test booking has been confirmed. Test: ${bookingData.labTestName}, Date: ${bookingData.date}, Time: ${bookingData.timeSlot}`,
         html: html,
       };
+      
+      console.log('Sending email with SendGrid:', {
+        to: msg.to,
+        from: msg.from,
+        subject: msg.subject
+      });
 
       const response = await this.sgMail.send(msg);
       console.log(`Lab booking confirmation sent to ${bookingData.recipientEmail}: ${response[0].headers['x-message-id']}`);
@@ -43,6 +58,14 @@ class EmailService {
       };
     } catch (error) {
       console.error('Failed to send lab booking confirmation:', error);
+      
+      // Log detailed SendGrid error information
+      if (error.response && error.response.body && error.response.body.errors) {
+        console.error('SendGrid error details:', error.response.body.errors);
+        const errorMessages = error.response.body.errors.map(err => err.message).join(', ');
+        throw new Error(`Email sending failed: ${errorMessages}`);
+      }
+      
       throw new Error(`Email sending failed: ${error.message}`);
     }
   }

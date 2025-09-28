@@ -47,6 +47,13 @@
 
 // New SendGrid integration
 const sgMail = require('@sendgrid/mail');
+
+// Validate SendGrid API key
+// if (!process.env.SENDGRID_API_KEY) {
+//   console.error('SENDGRID_API_KEY environment variable is not set');
+//   throw new Error('SENDGRID_API_KEY is required for email functionality');
+// }
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // sgMail.setDataResidency('eu'); 
 // uncomment the above line if you are sending mail using a regional EU subuser
