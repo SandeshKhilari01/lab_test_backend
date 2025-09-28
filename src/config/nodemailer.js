@@ -1,23 +1,52 @@
 const nodemailer = require('nodemailer');
+const { google } = require('googleapis');
 
-const createTransporter = () => {
+const oauth2Client = new google.auth.OAuth2(
+  process.env.CLIENT_ID,
+  process.env.CLIENT_SECRET,
+  process.env.REDIRECT_URI
+);
+if (process.env.REFRESH_TOKEN) {
+  oauth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
+}
+
+const createTransporter = async () => {
+  // Prefer OAuth2 if credentials are present; otherwise fallback to user/pass
+  const hasOAuth2 = Boolean(
+    process.env.CLIENT_ID && process.env.CLIENT_SECRET && process.env.REFRESH_TOKEN
+  );
+
+  if (hasOAuth2) {
+    const accessToken = await oauth2Client.getAccessToken();
+    return nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user: process.env.EMAIL_USER,
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
+        refreshToken: process.env.REFRESH_TOKEN,
+        accessToken: accessToken && accessToken.token ? accessToken.token : undefined
+      }
+    });
+  }
+
   return nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
-    port: 2525,
+    port: 587,
     secure: false,
     auth: {
-      user: process.env.EMAIL_USER, // your-email@gmail.com
-      pass: process.env.EMAIL_PASS  // your-app-password
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
     },
-    tls: {
-      rejectUnauthorized: false
-    }
+    tls: { rejectUnauthorized: false }
   });
 };
 
 const emailConfig = {
-  transporter: createTransporter(),
+  // transporter is now a function that returns a Promise<Transporter>
+  transporterPromise: createTransporter(),
   from: {
     name: process.env.EMAIL_FROM_NAME || 'Lab Test Confirmation',
     address: process.env.EMAIL_USER

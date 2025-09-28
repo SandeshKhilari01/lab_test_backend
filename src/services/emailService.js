@@ -4,13 +4,14 @@ const emailConfig = require('../config/nodemailer');
 
 class EmailService {
   constructor() {
-    this.transporter = emailConfig.transporter;
+    this.transporterPromise = emailConfig.transporterPromise;
     this.from = emailConfig.from;
   }
 
   async verifyConnection() {
     try {
-      await this.transporter.verify();
+      const transporter = await this.transporterPromise;
+      await transporter.verify();
       console.log('Email service connected successfully');
       return true;
     } catch (error) {
@@ -32,7 +33,8 @@ class EmailService {
         text: `Your lab test booking has been confirmed. Test: ${bookingData.labTestName}, Date: ${bookingData.date}, Time: ${bookingData.timeSlot}`
       };
 
-      const info = await this.transporter.sendMail(mailOptions);
+      const transporter = await this.transporterPromise;
+      const info = await transporter.sendMail(mailOptions);
       console.log(`Lab booking confirmation sent to ${bookingData.recipientEmail}: ${info.messageId}`);
       
       return { 
