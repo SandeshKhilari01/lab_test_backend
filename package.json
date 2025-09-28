@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "nodemon src/server.js",
     "dev": "nodemon src/server.js"
   },
   "keywords": [],
@@ -16,6 +16,7 @@
     "express": "^5.1.0",
     "moment": "^2.30.1",
     "mongoose": "^8.18.2",
+    "nodemailer": "^7.0.6",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
