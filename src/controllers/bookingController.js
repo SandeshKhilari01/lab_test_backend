@@ -23,10 +23,10 @@ class BookingController {
     }
   }
   
-  // GET /api/v1/bookings/phone/:phone
+  // GET /api/v1/bookings/phone (also supports :phone)
   async getBookingsByPhone(req, res) {
     try {
-      const { phone } = req.params;
+      const phone = req.body.phone || req.params.phone;
       
       if (!phone) {
         return errorResponse(res, 'Phone number is required', 400);
@@ -46,10 +46,10 @@ class BookingController {
     }
   }
   
-  // GET /api/v1/bookings/:id
+  // GET /api/v1/bookings (also supports :id)
   async getBookingById(req, res) {
     try {
-      const { id } = req.params;
+      const id = req.body.id || req.params.id;
       
       const booking = await bookingService.getBookingById(id);
       
@@ -64,10 +64,10 @@ class BookingController {
     }
   }
   
-  // PUT /api/v1/bookings/:id
+  // PUT /api/v1/bookings (also supports :id)
   async updateBooking(req, res) {
     try {
-      const { id } = req.params;
+      const id = req.body.id || req.params.id;
       const updateData = req.body;
       
       const booking = await bookingService.updateBooking(id, updateData);
@@ -83,10 +83,10 @@ class BookingController {
     }
   }
 
-  // PUT /api/v1/bookings/phone/:phone
+  // PUT /api/v1/bookings/phone (also supports :phone)
   async updateBookingByPhone(req, res) {
     try {
-      const { phone } = req.params;
+      const phone = req.body.phone || req.params.phone;
       const updateData = req.body;
 
       if (!phone) {
@@ -106,10 +106,10 @@ class BookingController {
     }
   }
   
-  // DELETE /api/v1/bookings/:id
+  // DELETE /api/v1/bookings (also supports :id)
   async cancelBooking(req, res) {
     try {
-      const { id } = req.params;
+      const id = req.body.id || req.params.id;
       
       const result = await bookingService.cancelBooking(id);
       
@@ -124,10 +124,10 @@ class BookingController {
     }
   }
 
-  // DELETE /api/v1/bookings/phone/:phone
+  // DELETE /api/v1/bookings/phone (also supports :phone)
   async cancelBookingByPhone(req, res) {
     try {
-      const { phone } = req.params;
+      const phone = req.body.phone || req.params.phone;
 
       if (!phone) {
         return errorResponse(res, 'Phone number is required', 400);
