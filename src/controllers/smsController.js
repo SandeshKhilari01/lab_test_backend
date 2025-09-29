@@ -5,7 +5,7 @@ class SmsController {
   // POST /api/v1/sms/confirm
   static async sendBookingConfirmation(req, res) {
     try {
-      const { phone_number, user_name, lab_test_name, date, time_slot } = req.body;
+      const { phone_number, user_name, lab_test_name, date, time_slot, address } = req.body;
 
       if (!phone_number || !lab_test_name || !date || !time_slot) {
         return errorResponse(res, 'phone_number, lab_test_name, date, and time_slot are required', 400);
@@ -17,7 +17,8 @@ class SmsController {
       }
 
       const greetingName = user_name ? `Hi ${user_name},` : 'Hello,';
-      const body = `${greetingName} your lab booking for ${lab_test_name} is confirmed. Date: ${date}, Slot: ${time_slot}. Reply HELP for assistance.`;
+      const locationText = address ? ` Location: ${address}.` : '';
+      const body = `${greetingName} your lab booking for ${lab_test_name} is confirmed. Date: ${date}, Slot: ${time_slot}.${locationText} Reply HELP for assistance.`;
 
       const result = await SmsService.sendTextMessage(phone_number, body);
 
@@ -26,6 +27,7 @@ class SmsController {
         lab_test_name,
         date,
         time_slot,
+        address: address || null,
         message_sid: result.sid
       });
     } catch (error) {
