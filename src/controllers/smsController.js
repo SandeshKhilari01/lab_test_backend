@@ -17,8 +17,9 @@ class SmsController {
       }
 
       const greetingName = user_name ? `Hi ${user_name},` : 'Hello,';
-      const locationText = address ? ` Location: ${address}.` : '';
-      const body = `${greetingName} your lab booking for ${lab_test_name} is confirmed. Date: ${date}, Slot: ${time_slot}.${locationText} Reply HELP for assistance.`;
+      const nameText = user_name ? `${user_name}, ` : '';
+      const locationText = address ? `, Location: ${address}` : '';
+      const body = `${greetingName} Lab booking confirmation: Name: ${nameText}Test: ${lab_test_name}, Date: ${date}, Time: ${time_slot}${locationText}.`;
 
       const result = await SmsService.sendTextMessage(phone_number, body);
 
