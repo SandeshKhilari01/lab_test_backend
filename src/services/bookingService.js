@@ -37,20 +37,10 @@ class BookingService {
         booking_status: { $ne: 'cancelled' }
       }).sort({ created_at: -1 });
       
-      // Format for AI agent consumption
-      const formattedBookings = bookings.map(booking => ({
-        booking_id: booking.booking_id,
-        test_name: booking.test_name,
-        appointment_date: this.formatDateForHuman(booking.appointment_date),
-        appointment_time: this.formatTimeForHuman(booking.appointment_time),
-        booking_type: this.formatBookingType(booking.booking_type),
-        status: this.formatStatus(booking.booking_status)
-      }));
-      
       return {
         total_bookings: bookings.length,
-        bookings: formattedBookings,
-        latest_booking: formattedBookings[0] || null
+        bookings: bookings,
+        latest_booking: bookings[0] || null
       };
       
     } catch (error) {
