@@ -5,6 +5,7 @@ const connectDB = require('./config/database');
 const bookingRoutes = require('./routes/bookingRoutes');
 const emailRoutes = require('./routes/emailRoutes');
 const otpRoutes = require('./routes/otpRoutes');
+const smsRoutes = require('./routes/smsRoutes');
 
 const app = express();
 const PORT = process.env.envPORT || process.env.PORT || 3000;
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/v1/bookings', bookingRoutes);
 app.use('/api/v1/email', emailRoutes);
 app.use('/api/v1/otp', otpRoutes);
+app.use('/api/v1/sms', smsRoutes);
 
 // Health check
 app.get('/health', (req, res) => {
