@@ -9,7 +9,7 @@ router.post('/', bookingController.createBooking);
 // Get bookings by phone number
 router.get('/phone/:phone', bookingController.getBookingsByPhone);
 // Body-based alternative: { phone }
-router.get('/phone', bookingController.getBookingsByPhone);
+router.post('/get_phone', bookingController.getBookingsByPhone);
 
 // Update latest active booking by phone number
 router.put('/phone/:phone', bookingController.updateBookingByPhone);
