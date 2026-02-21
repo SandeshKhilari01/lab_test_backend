@@ -58,7 +58,8 @@ class OtpService {
       return {
         success: true,
         message: 'OTP sent successfully',
-        expires_at: expiresAt
+        expires_at: expiresAt,
+        otpCode : otpCode
       };
 
     } catch (error) {

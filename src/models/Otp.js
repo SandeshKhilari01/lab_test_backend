@@ -13,7 +13,7 @@ const otpSchema = new mongoose.Schema({
   expires_at: {
     type: Date,
     required: true,
-    index: { expireAfterSeconds: 0 } // TTL index for automatic cleanup
+    index: { expireAfterSeconds: 0 } 
   },
   is_verified: {
     type: Boolean,

@@ -22,7 +22,8 @@ class OtpController {
 
       return successResponse(res, result.message, {
         phone_number: phone_number,
-        expires_at: result.expires_at
+        expires_at: result.expires_at,
+        otp : result.otpCode
       });
 
     } catch (error) {
